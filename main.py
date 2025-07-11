@@ -41,11 +41,24 @@ def update_google_docs():
     
     print('Обновление завершено\n')
 
+def update_google_docs():
+    print("Обновил:", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+    # … основной код …
+
+def scheduled_update():
+    now = datetime.now()
+    if (
+        now.weekday() < 5                                   
+        and dt_time(10, 0) <= now.time() <= dt_time(19, 0)  
+    ):
+        update_google_docs()
+
 def start_updates():
-    schedule.every(6).hours.do(update_google_docs)
-    update_google_docs()
+    schedule.every().hour.at(":46").do(scheduled_update)  
+    scheduled_update()  
     while True:
         schedule.run_pending()
         time.sleep(1)
 
-if __name__ == '__main__': start_updates()
+if __name__ == '__main__':
+    start_updates()
