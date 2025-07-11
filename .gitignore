@@ -1,8 +1,4 @@
-# ————— Игнорируем скомпилированный байт-код Python —————
-# любая папка __pycache__
 **/__pycache__/
-# все файлы .pyc, .pyo и .pyd
 *.py[cod]
-
-# ————— Игнорируем настройки VS Code/Visual Studio —————
 .vs/
+google_docs/credentials.json
